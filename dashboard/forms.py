@@ -1,9 +1,11 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 
 class DashboardForm(forms.Form):
     PRACTICE_CHOICES = (
         ('EP', 'Emergency Practice'),
-        ('CT', 'City Traffic'),
+        ('CT', 'City Traffic Practice'),
     )
 
     EP_EXERCISE_CHOICES = (
@@ -35,5 +37,36 @@ class DashboardForm(forms.Form):
         ('SM', 'Surprise Mode'),
     )
     
-    mode = forms.ChoiceField(choices=PRACTICE_CHOICES, required=True)
+    practice = forms.ChoiceField(choices=PRACTICE_CHOICES, required=True)
+    
+    ep_exercises = forms.MultipleChoiceField(
+        choices=EP_EXERCISE_CHOICES,
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    ct_exercises = forms.MultipleChoiceField(
+        choices=CT_EXERCISE_CHOICES,
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+    
     session_duration = forms.ChoiceField(choices=DURATION_CHOICES, required=True)
+
+    start_delay = forms.ChoiceField(choices=START_DELAY_OPTIONS, required=True)
+
+    mode = forms.ChoiceField(choices=MODE_CHOICES, required=True)
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        practice = cleaned_data.get('practice')
+        ep_exercises = cleaned_data.get('ep_exercises')
+        ct_exercises = cleaned_data.get('ct_exercises')
+
+        if practice == 'EP' and not ep_exercises:
+            self.add_error('ep_exercises', "Please select at least one exercise.")
+
+        if practice == 'CT' and not ct_exercises:
+            self.add_error('ct_exercises', "Please select at least one exercise.")
+
