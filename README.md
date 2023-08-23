@@ -1,2 +1,3 @@
 # brakeride
-problem-based learning project - moto emergency exercises with voice commands (MVP)
+Problem-based learning project - moto emergency exercises with voice commands (MVP).
+Stateless - trying w/o db reliance.
