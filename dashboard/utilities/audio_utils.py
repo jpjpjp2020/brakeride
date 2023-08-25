@@ -11,13 +11,3 @@ AUDIO_ACTIONS = {
     'find_an_escape': 'audio/find_and_escape.mp3',
     'spot_and_find': 'audio/spot_and_find.mp3',
 }
-
-
-def generate_schedule_for_emergency(user_choices):
-    # Generate a schedule specific to emergency practice mode
-    pass
-
-
-def generate_schedule_for_city_traffic(user_choices):
-    # Generate a schedule specific to city/traffic mode
-    pass

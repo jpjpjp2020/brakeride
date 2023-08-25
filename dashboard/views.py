@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .audio_utils import generate_schedule_for_emergency, generate_schedule_for_city_traffic
+from .utilities.audio_utils import generate_schedule_for_emergency, generate_schedule_for_city_traffic
 from datetime import datetime, timedelta
 
 
