@@ -1,4 +1,8 @@
-def task_comp_for_emergency(user_choices):
-    pass
+from stack_task_utils import stack_tasks
 
-#  use stack_task_utils with CT tasks
+
+def get_emergency_tasks(user_choices):
+
+    ep_exercises = user_choices['ep_exercises']
+
+    return stack_tasks(ep_exercises)

@@ -1,4 +1,8 @@
-def task_comp_for_city_traffic(user_choices):
-    pass
+from stack_task_utils import stack_tasks
 
-#  use stack_task_utils with CT tasks
+
+def get_city_traffic_tasks(user_choices):
+
+    ct_exercises = user_choices['ct_exercises']
+
+    return stack_tasks(ct_exercises)

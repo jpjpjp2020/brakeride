@@ -1,9 +1,6 @@
 import random
 
 def stack_tasks(exercises):
-    """
-    
-    """
     
     if len(exercises) == 1:
         return [exercises[0], exercises[0], exercises[0]]
@@ -22,6 +19,3 @@ def stack_tasks(exercises):
 
     # Additional safety return. *Shouldn't be reached.
     return [None, None, None]
-
-
-# + also a diagram for the flow 
