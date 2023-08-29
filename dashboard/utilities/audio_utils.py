@@ -1,3 +1,7 @@
+"""
+All audio cues which will be added to sessions stack tasks on the view level.
+"""
+
 AUDIO_ACTIONS = {
     # general audio commands:
     'start': 'audio/start.mp3',

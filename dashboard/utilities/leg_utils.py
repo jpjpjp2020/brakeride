@@ -1,3 +1,9 @@
+"""
+Functions used by busy_utils and surprise_utils.
+divide_into_legs generates minute slots for 3 legs.
+get_random_from_leg grabs random minute slots per leg.
+"""
+
 import random
 
 

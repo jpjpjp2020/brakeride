@@ -1,3 +1,14 @@
+"""
+stack_tasks generates a composition for tasks - used in emergency and city traffic utils.
+Busy mode needs 3 tasks per leg; Surprise mode needs 1 task per leg.
+A session always has 3 legs.
+Emergency practice and City Traffic practice have 3 excercises (A,B,C).
+stack_tasks populates 3 tasks by user selection:
+User only chose A: 3 tasks would be A A A
+User chose A and C: 3 tasks could be C A C, or C A A, etc.
+User chose all: 3 tasks could be: A B C, or B A C, etc.
+"""
+
 import random
 
 def stack_tasks(exercises):
