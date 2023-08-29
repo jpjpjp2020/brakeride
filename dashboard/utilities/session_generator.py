@@ -35,4 +35,4 @@ def generate_session_stack(data):
     if not session_timing_slots or not session_exercises:
         raise ValueError("Invalid combination of mode and practice.")
 
-    return list(zip(session_timing_slots, session_exercises))
+    return sorted(list(zip(session_timing_slots, session_exercises)), key=lambda x: x[0])

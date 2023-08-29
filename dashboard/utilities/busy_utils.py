@@ -10,7 +10,7 @@ from .leg_utils import divide_into_legs, get_random_from_leg
 
 def busy_mode_timing_stack(data):
 
-    ss_delay = data['start_delay']
+    ss_delay = int(data['start_delay'])  # type check
     ss_duration = data['session_duration']
     
     leg1, leg2, leg3 = divide_into_legs(ss_duration)

@@ -8,6 +8,7 @@ import random
 
 
 def divide_into_legs(session_duration):
+    session_duration = int(session_duration)  # type check
     all_minutes = list(range(1, session_duration + 1))
     leg_size = len(all_minutes) // 3
     leg1 = all_minutes[:leg_size]

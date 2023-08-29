@@ -10,7 +10,7 @@ from .leg_utils import divide_into_legs, get_random_from_leg
 
 def surprise_mode_timing_stack(data):
 
-    st_delay = data['start_delay']
+    st_delay = int(data['start_delay'])  # type check
     ss_duration = data['session_duration']
     
     leg1, leg2, leg3 = divide_into_legs(ss_duration)
