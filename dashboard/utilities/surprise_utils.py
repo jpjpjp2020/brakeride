@@ -5,7 +5,7 @@ A pesudorandom delay is composed of 1 random minute slot for each leg(1/3 of ses
 Start delay is used to generate start delay in combination with random minute start delays.
 """
 
-from leg_utils import divide_into_legs, get_random_from_leg
+from .leg_utils import divide_into_legs, get_random_from_leg
 
 
 def surprise_mode_timing_stack(data):
