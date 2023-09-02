@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+
+    <title>
+        {% block title %}
+        Brakeride - Practice moto emergencies.
+        {% endblock title %}
+    </title>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <main>
+        {% block content %}
+        <!-- Overridden by the content in the app-specific templates -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Footer -->
+    </footer>
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

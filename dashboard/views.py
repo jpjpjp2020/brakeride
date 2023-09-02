@@ -1,43 +1,41 @@
-from django.shortcuts import render
-from .utilities.audio_utils import generate_schedule_for_emergency, generate_schedule_for_city_traffic
+from django.shortcuts import render, redirect
+from dashboard.forms import DashboardForm
 from datetime import datetime, timedelta
+from .utilities.session_generator import generate_session_stack
+from django.http import JsonResponse
 
 
 def dashboard_view(request):
+    
     if request.method == 'POST':
         form = DashboardForm(request.POST)
+
         if form.is_valid():
-            # Process the form's data, store in the session, etc.
-            mode = form.cleaned_data['mode']
-            # ... handle other fields ...
+            request.session['user_choices'] = form.cleaned_data
 
-            # Store in session and redirect
-            request.session['mode'] = mode
-            # ... store other fields ...
-
-            return redirect('start_exercise')
+            return redirect('play_stack_view')
+        
     else:
         form = DashboardForm()
 
     return render(request, 'dashboard/dashboard.html', {'form': form})
 
 
-def emergency_mode_view(request):
-    user_choices = ...  # User choices
-    audio_schedule = generate_schedule_for_emergency(user_choices)
-    # Rest of the view logic
+# Combine play stack with timedelta and audio cues + add countdown timer
+# add timedelta logic after form handling is set up
+def play_stack_view(request):
+    user_choices = request.session.get('user_choices')
+    if not user_choices:
+        return redirect('dashboard_view')
+    
+    play_stack = generate_session_stack(user_choices)
 
 
-def city_traffic_mode_view(request):
-    user_choices = ...  # User choices
-    audio_schedule = generate_schedule_for_city_traffic(user_choices)
-    # Rest of the view logic
-
-
-def generate_schedule(user_choices):
-    start_time = datetime.now()
-    schedule = [{'action': 'start', 'time': start_time}]
-
-    # Set up logic
-
-    return schedule
+def api_endpoint(request):
+    if request.method == 'POST':
+        form = DashboardForm(request.POST)
+        if form.is_valid():
+            # Your logic here
+            return JsonResponse({'message': 'Successfull setup'})
+        else:
+            return JsonResponse({'message': 'Sorry! Setup failed'})

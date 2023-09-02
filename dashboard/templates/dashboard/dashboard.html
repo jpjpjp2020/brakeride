@@ -1,1 +1,32 @@
-<h1>test</h1>
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="p-6 font-sans text-black">
+
+    <img class="h-10 w-auto" src="{% static 'img/bike.svg' %}" alt="">
+
+    <h1 class="text-xl font-normal text-center mb-8">Set up a practice session</h1>
+
+    <div id="formContainer">
+        <form id="dashboardForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="responseContainer">
+        <!-- response from server here -->
+    </div>
+
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock scripts %}
