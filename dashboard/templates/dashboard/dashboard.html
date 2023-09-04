@@ -6,9 +6,15 @@
 
 <div class="p-6 font-sans text-black">
 
-    <img class="h-10 w-auto" src="{% static 'img/bike.svg' %}" alt="">
+    <div class="flex justify-start">
+        <div class="flex flex-col items-center">
+            <img class="h-16 w-auto" src="{% static 'img/bike.svg' %}"
+                alt="Practice moto emergencies to better hand anticipate dangers.">
+            <p class="text-sm tracking-widest font-semibold mt-1">BRAKERIDE</p>
+        </div>
+    </div>
 
-    <h1 class="text-xl font-normal text-center mb-8">Set up a practice session</h1>
+    <h1 class="text-xl font-normal text-center my-6">Practice moto emergencies</h1>
 
     <div id="formContainer">
         <form id="dashboardForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
