@@ -6,13 +6,15 @@
 
     <form id="formFlowForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
 
-        <div class="form-step" id="ep_or_ct">
+        {% csrf_token %}
+
+        <div class="form-step active" id="ep_or_ct">
 
             <h2 class="text-base font-semibold">1. Choose the practice type:</h2>
 
             <p class="text-base text-left mt-4">
                 <span class="font-medium">Emergency:</span><br>When no traffic and for more severe maneuvers.<br>
-                <span class="font-medium">City traffic:</span><br>Safe in traffic and about spotting hazards.
+                <span class="font-medium">City traffic:</span><br>Safer in traffic and about spotting hazards.
             </p>
 
             <div class="flex flex-col justify-center space-y-12 my-12">
@@ -94,7 +96,7 @@
             <p class="text-base text-left mt-4">
                 The longer the session, the longer the possible gaps between audio cues can be.<br>Anticipating replicated
                 dangers and planning to handle them is a useful mindset to practice
-                when riding.
+                when riding - The absence becomes a presence.
             </p>
 
             <div class="flex flex-col justify-center space-y-12 my-12">
