@@ -4,165 +4,167 @@
 
 <div class="font-sans" id="formContainer">
 
-    <div class="form-step" id="ep_or_ct">
+    <form id="formFlowForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
 
-        <h2 class="text-base font-semibold">1. Choose the practice type:</h2>
+        <div class="form-step" id="ep_or_ct">
 
-        <p class="text-base text-left mt-4">
-            <span class="font-medium">Emergency:</span><br>When no traffic and for more severe maneuvers.<br>
-            <span class="font-medium">City traffic:</span><br>Safe in traffic and about spotting hazards.
-        </p>
+            <h2 class="text-base font-semibold">1. Choose the practice type:</h2>
 
-        <div class="flex flex-col justify-center space-y-12 my-12">
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="ep_choice">Emergency<br>practice</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="ct_choice">City traffic<br>practice</button>
-        </div>
+            <p class="text-base text-left mt-4">
+                <span class="font-medium">Emergency:</span><br>When no traffic and for more severe maneuvers.<br>
+                <span class="font-medium">City traffic:</span><br>Safe in traffic and about spotting hazards.
+            </p>
 
-    </div>
-
-    <div class="form-step" id="ep_or_ct_practice_ex_comp">
-
-        <h2 class="text-base font-semibold">2. Choose the exercises:</h2>
-
-        <p class="text-base text-left mt-4">
-            Select or deselect specific exercises.<br>Deselecting some does not reduce the number of tasks as all play
-            slots are filled with your choices.
-        </p>
-
-        <div class="flex flex-col text-center space-y-12 my-12" id="ep_ex">
-            {% for choice in form.ep_exercises.field.choices %}
-            <div class="custom-checkbox">
-                <label for="{{ choice.0 }}">
-                    <input type="checkbox" name="ep_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ep_exercises.value %} checked {% endif %}>
-                    {{ choice.1 }}
-                </label>
+            <div class="flex flex-col justify-center space-y-12 my-12">
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="ep_choice">Emergency<br>practice</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="ct_choice">City traffic<br>practice</button>
             </div>
-            {% endfor %}
+
         </div>
 
-        <div class="flex flex-col text-center space-y-12 my-12" id="ct_ex">
-            {% for choice in form.ct_exercises.field.choices %}
-            <div class="custom-checkbox">
-                <label for="{{ choice.0 }}">
-                    <input type="checkbox" name="ct_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ct_exercises.value %} checked {% endif %}>
-                    {{ choice.1 }}
-                </label>
+        <div class="form-step" id="ep_or_ct_practice_ex_comp">
+
+            <h2 class="text-base font-semibold">2. Choose the exercises:</h2>
+
+            <p class="text-base text-left mt-4">
+                Select or deselect specific exercises.<br>Deselecting some does not reduce the number of tasks as all play
+                slots are filled with your choices.
+            </p>
+
+            <div class="flex flex-col text-center space-y-12 my-12" id="ep_ex">
+                {% for choice in form.ep_exercises.field.choices %}
+                <div class="custom-checkbox">
+                    <label for="{{ choice.0 }}">
+                        <input type="checkbox" name="ep_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ep_exercises.value %} checked {% endif %}>
+                        {{ choice.1 }}
+                    </label>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+
+            <div class="flex flex-col text-center space-y-12 my-12" id="ct_ex">
+                {% for choice in form.ct_exercises.field.choices %}
+                <div class="custom-checkbox">
+                    <label for="{{ choice.0 }}">
+                        <input type="checkbox" name="ct_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ct_exercises.value %} checked {% endif %}>
+                        {{ choice.1 }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="flex flex-row justify-center space-x-6 my-12">
+                <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="back_to_ep_ct">Back</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="to_busy_or_surprise">Next</button>
+            </div>
+
         </div>
 
-        <div class="flex flex-row justify-center space-x-6 my-12">
-            <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="back_to_ep_ct">Back</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="to_busy_or_surprise">Next</button>
+        <div class="form-step" id="busy_or_surprise">
+
+            <h2 class="text-base font-semibold">3. Choose the mode:</h2>
+
+            <p class="text-base text-left mt-4">
+                <span class="font-medium">Busy mode:</span><br>3x more tasks and less anticipation.<br>
+                <span class="font-medium">Surprise mode:</span><br>3x less tasks and more anticipation - more realistic.
+            </p>
+
+            <div class="flex flex-col justify-center space-y-12 my-12">
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="busy_choice">Busy mode</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="surprise_choice">Surprise mode</button>
+            </div>
+
+            <div class="flex flex-row justify-center space-x-6 my-12">
+                <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="back_to_ex_comp">Back</button>
+            </div>
+
         </div>
 
-    </div>
+        <div class="form-step" id="15_30_60_ses_duration">
 
-    <div class="form-step" id="busy_or_surprise">
+            <h2 class="text-base font-semibold">4. Choose the session duration:</h2>
 
-        <h2 class="text-base font-semibold">3. Choose the mode:</h2>
+            <p class="text-base text-left mt-4">
+                The longer the session, the longer the possible gaps between audio cues can be.<br>Anticipating replicated
+                dangers and planning to handle them is a useful mindset to practice
+                when riding.
+            </p>
 
-        <p class="text-base text-left mt-4">
-            <span class="font-medium">Busy mode:</span><br>3x more tasks and less anticipation.<br>
-            <span class="font-medium">Surprise mode:</span><br>3x less tasks and more anticipation - more realistic.
-        </p>
+            <div class="flex flex-col justify-center space-y-12 my-12">
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="du15_choice">15 minutes</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="du30_choice">30 minutes</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="du60_choice">60 minutes</button>
+            </div>
 
-        <div class="flex flex-col justify-center space-y-12 my-12">
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="busy_choice">Busy mode</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="surprise_choice">Surprise mode</button>
+            <div class="flex flex-row justify-center space-x-6 my-12">
+                <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="back_to_busy_surprise">Back</button>
+            </div>
+
         </div>
 
-        <div class="flex flex-row justify-center space-x-6 my-12">
-            <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="back_to_ex_comp">Back</button>
+        <div class="form-step" id="1_5_15_start_delay">
+
+            <h2 class="text-base font-semibold">5. Choose the start delay:</h2>
+
+            <p class="text-base text-left mt-4">
+                Start delay is added to the session length.<br>Consider your route and time to practice to choose one.
+            </p>
+
+            <div class="flex flex-col justify-center space-y-12 my-12">
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="de1_choice">1 minute</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="de5_choice">5 minutes</button>
+                <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="de15_choice">15 minutes</button>
+            </div>
+
+            <div class="flex flex-row justify-center space-x-6 my-12">
+                <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="back_to_ses_duration">Back</button>
+            </div>
+
         </div>
 
-    </div>
+        <div class="form-step" id="terms_and_start">
 
-    <div class="form-step" id="15_30_60_ses_duration">
+            <h2 class="text-base font-semibold">6. Agree to terms and start session:</h2>
+            <p class="text-base text-left my-4">
+                <span class="font-medium text-yellow-600">Terms:</span> I agree not to danger myself or others when
+                practicing. I will not do any unexpected
+                moves in
+                traffic. I will consider my riding skill and act accordingly.
+            </p>
+            <p class="font-medium text-base text-left mt-4">
+                Use headphones and do not look at a screen when riding. Audio cues do not show up on the screen.
+            </p>
+            <p class="font-medium text-yellow-600 text-base text-left mt-4">
+                By starting the session, you agree
+                to the terms.
+            </p>
 
-        <h2 class="text-base font-semibold">4. Choose the session duration:</h2>
+            <div class="flex flex-row justify-center space-x-6 my-12">
+                <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    id="back_to_start_delay">Back</button>
+                <button class="rounded-md bg-green-600 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
+                    type="submit">Start</button>
+            </div>
 
-        <p class="text-base text-left mt-4">
-            The longer the session, the longer the possible gaps between audio cues can be.<br>Anticipating replicated
-            dangers and planning to handle them is a useful mindset to practice
-            when riding.
-        </p>
-
-        <div class="flex flex-col justify-center space-y-12 my-12">
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="du15_choice">15 minutes</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="du30_choice">30 minutes</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="du60_choice">60 minutes</button>
         </div>
 
-        <div class="flex flex-row justify-center space-x-6 my-12">
-            <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="back_to_busy_surprise">Back</button>
-        </div>
-
-    </div>
-
-    <div class="form-step" id="1_5_15_start_delay">
-
-        <h2 class="text-base font-semibold">5. Choose the start delay:</h2>
-
-        <p class="text-base text-left mt-4">
-            Start delay is added to the session length.<br>Consider your route and time to practice to choose one.
-        </p>
-
-        <div class="flex flex-col justify-center space-y-12 my-12">
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="de1_choice">1 minute</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="de5_choice">5 minutes</button>
-            <button class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="de15_choice">15 minutes</button>
-        </div>
-
-        <div class="flex flex-row justify-center space-x-6 my-12">
-            <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="back_to_ses_duration">Back</button>
-        </div>
-
-    </div>
-
-    <div class="form-step" id="terms_and_start">
-
-        <h2 class="text-base font-semibold">6. Agree to terms and start session:</h2>
-        <p class="text-base text-left my-4">
-            <span class="font-medium text-yellow-600">Terms:</span> I agree not to danger myself or others when
-            practicing. I will not do any unexpected
-            moves in
-            traffic. I will consider my riding skill and act accordingly.
-        </p>
-        <p class="font-medium text-base text-left mt-4">
-            Use headphones and do not look at a screen when riding. Audio cues do not show up on the screen.
-        </p>
-        <p class="font-medium text-yellow-600 text-base text-left mt-4">
-            By starting the session, you agree
-            to the terms.
-        </p>
-
-        <div class="flex flex-row justify-center space-x-6 my-12">
-            <button class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                id="back_to_start_delay">Back</button>
-            <button class="rounded-md bg-green-600 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
-                type="submit">Start</button>
-        </div>
-
-    </div>
+    </form>
 
 </div>
-
-<div id="responseContainer"></div>
 
 {% endblock content %}

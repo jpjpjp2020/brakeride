@@ -20,17 +20,9 @@
         {% include 'dashboard/form_flow.html' %}
     </section>
 
-    <div class=" bg-gray-200 mt-16" id="formContainer">
-        <form id="dashboardForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <div id="responseContainer">
-        <!-- response from server here -->
-    </div>
+    <section id="response_play">
+        {% include 'dashboard/response_play.html' %}
+    </section>
 
 </div>
 
