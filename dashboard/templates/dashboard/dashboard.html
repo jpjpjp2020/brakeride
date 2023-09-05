@@ -14,9 +14,13 @@
         </div>
     </div>
 
-    <h1 class="text-xl font-normal text-center my-6">Practice moto emergencies</h1>
+    <h1 class="text-2xl font-normal text-center my-12">Practice moto emergencies</h1>
 
-    <div id="formContainer">
+    <section id="form_flow">
+        {% include 'dashboard/form_flow.html' %}
+    </section>
+
+    <div class=" bg-gray-200 mt-16" id="formContainer">
         <form id="dashboardForm" method="post" action="{% url 'dashboard:api_endpoint' %}">
             {% csrf_token %}
             {{ form.as_p }}
