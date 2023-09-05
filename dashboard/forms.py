@@ -14,9 +14,9 @@ class DashboardForm(forms.Form):
     )
 
     CT_EXERCISE_CHOICES = (
+        ('spot_and_find', 'Spot a hazard and find an escape'),
         ('spot_a_hazard', 'Spot a hazard'),
         ('find_an_escape', 'Find an escape'),
-        ('spot_and_find', 'Spot a hazard and find an escape'),
     )
     
     DURATION_CHOICES = (
@@ -41,13 +41,15 @@ class DashboardForm(forms.Form):
     ep_exercises = forms.MultipleChoiceField(
         choices=EP_EXERCISE_CHOICES,
         widget=forms.CheckboxSelectMultiple,
-        required=False
+        required=False,
+        initial=[choice[0] for choice in EP_EXERCISE_CHOICES],
     )
 
     ct_exercises = forms.MultipleChoiceField(
         choices=CT_EXERCISE_CHOICES,
         widget=forms.CheckboxSelectMultiple,
-        required=False
+        required=False,
+        initial=['spot_and_find'],
     )
     
     session_duration = forms.ChoiceField(choices=DURATION_CHOICES, required=True)

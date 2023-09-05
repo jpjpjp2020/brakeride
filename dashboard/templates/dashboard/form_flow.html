@@ -32,15 +32,25 @@
         </p>
 
         <div class="flex flex-col text-center space-y-12 my-12" id="ep_ex">
-            <p class="text-lg font-medium text-gray-800" id="ep_brake">Brake</p>
-            <p class="text-lg font-medium text-gray-800" id="ep_swerve_right">Swerve right</p>
-            <p class="text-lg font-medium text-gray-800" id="ep_swerve_left">Swerve left</p>
+            {% for choice in form.ep_exercises.field.choices %}
+            <div class="custom-checkbox">
+                <label for="{{ choice.0 }}">
+                    <input type="checkbox" name="ep_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ep_exercises.value %} checked {% endif %}>
+                    {{ choice.1 }}
+                </label>
+            </div>
+            {% endfor %}
         </div>
 
         <div class="flex flex-col text-center space-y-12 my-12" id="ct_ex">
-            <p class="text-lg font-medium text-gray-800" id="ct_spot_find"> Spot a hazard<br>& find an escape</p>
-            <p class="text-lg font-medium text-gray-800" id="ct_spot">Spot a hazard</p>
-            <p class="text-lg font-medium text-gray-800" id="ct_find">Find an escape</p>
+            {% for choice in form.ct_exercises.field.choices %}
+            <div class="custom-checkbox">
+                <label for="{{ choice.0 }}">
+                    <input type="checkbox" name="ct_exercises" value="{{ choice.0 }}" id="{{ choice.0 }}" {% if choice.0 in form.ct_exercises.value %} checked {% endif %}>
+                    {{ choice.1 }}
+                </label>
+            </div>
+            {% endfor %}
         </div>
 
         <div class="flex flex-row justify-center space-x-6 my-12">
