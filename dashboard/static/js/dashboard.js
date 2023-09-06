@@ -14,8 +14,11 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                $('#formContainer').hide();
-                $('#responseContainer').html(data.message);
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                } else {
+                    console.error("Expected redirect_url in the server response, but it was not provided.");
+                }
             },
             error: function (error) {
                 console.error('Error:', error);

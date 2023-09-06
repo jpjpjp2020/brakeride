@@ -5,6 +5,11 @@ function formFlow() {
     const ctChoiceBtn = document.getElementById('ct_choice');
     const epExercises = document.getElementById('ep_ex');
     const ctExercises = document.getElementById('ct_ex');
+    const singleChoiceButtons = [
+        'busy_choice', 'surprise_choice',
+        'du15_choice', 'du30_choice', 'du60_choice',
+        'de1_choice', 'de5_choice', 'de15_choice'
+    ];
     let currentStep = 0;
 
     function showStep(stepIndex) {
@@ -12,43 +17,41 @@ function formFlow() {
         formSteps[stepIndex].classList.add('active');
     }
 
-    // event listener to ep choice button
     epChoiceBtn.addEventListener('click', () => {
-        showStep(currentStep + 1);
+        currentStep++;
+        showStep(currentStep);
         epExercises.style.display = 'flex';
         ctExercises.style.display = 'none';
     });
 
-    // event listener to ct choice button
     ctChoiceBtn.addEventListener('click', () => {
-        showStep(currentStep + 1);
+        currentStep++;
+        showStep(currentStep);
         ctExercises.style.display = 'flex';
         epExercises.style.display = 'none';
     });
 
-    // event listeners to back/next buttons
     formContainer.addEventListener('click', (e) => {
         const target = e.target;
 
-        if (target.id === 'back_to_ep_ct' || target.id === 'back_to_ex_comp' || target.id === 'back_to_busy_surprise' || target.id === 'back_to_ses_duration' || target.id === 'back_to_start_delay') {
-            showStep(currentStep - 1);
+        if (target.id.startsWith('back_to_')) {
             currentStep--;
+            showStep(currentStep);
         } else if (target.id === 'to_busy_or_surprise') {
-            showStep(currentStep + 1);
             currentStep++;
+            showStep(currentStep);
         }
     });
 
-    // ChoiceField next
-    const singleChoiceButtons = ['busy_choice', 'surprise_choice', 'du15_choice', 'du30_choice', 'du60_choice', 'de1_choice', 'de5_choice', 'de15_choice'];
     singleChoiceButtons.forEach(btnID => {
         const btn = document.getElementById(btnID);
-        btn.addEventListener('click', () => {
-            showStep(currentStep + 1);
-            currentStep++;
-        });
+        if (btn) {
+            btn.addEventListener('click', () => {
+                currentStep++;
+                showStep(currentStep);
+            });
+        }
     });
 }
 
 document.addEventListener('DOMContentLoaded', formFlow);
-
