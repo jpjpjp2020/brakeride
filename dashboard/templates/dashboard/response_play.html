@@ -1,9 +1,33 @@
+{% extends "dashboard/base.html" %}
+
 {% load static %}
 
 {% block content %}
 
-<div id="responseContainer">
+<div class="mt-8 mb-12" id="responseContainer">
+
+    <div class="rounded-md bg-white px-4 pt-4 pb-12">
+
+        <h2 class="text-base font-semibold">Ongoing session:</h2>
+
+        <p class="text-base text-left mt-4">
+            Use headphones and do not look at a screen while riding. Audio cues will not show up on the screen.
+            Feel free to end the session any time.
+        </p>
+
+        <div class="flex flex-col text-center space-y-12 my-12">
+
+            <div class="text-4xl font-semibold text-green-800" id="countdown-display">
+                00:00
+            </div>
+            <button type="button" class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white" id="end-session">End Session</button>
+    
+        </div>
+    
+    </div>
 
 </div>
+
+<script src="{% static 'js/response_play.js' %}"></script>
 
 {% endblock content %}

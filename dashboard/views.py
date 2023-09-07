@@ -39,3 +39,7 @@ def api_endpoint(request):
             return JsonResponse({'message': 'Successfull setup'})
         else:
             return JsonResponse({'message': 'Sorry! Setup failed'})
+        
+
+def play_view(request):
+    return render(request, 'dashboard/response_play.html')
