@@ -1,14 +1,12 @@
 {% load static %}
 
-{% block content %}
-
 <div class="font-sans" id="formContainer">
 
     <form id="formFlowForm" method="" action="">
 
         {% csrf_token %}
 
-        <div class="form-step active" id="ep_or_ct">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step active" id="ep_or_ct">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">1.</span> Choose the practice type:</h2>
 
@@ -17,7 +15,7 @@
                 <span class="font-medium">City traffic:</span><br>Safer in traffic and about spotting hazards.
             </p>
 
-            <div class="flex flex-col justify-center space-y-12 my-12">
+            <div class="flex flex-col justify-center space-y-12 mt-12">
                 <button type="button" class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="ep_choice">Emergency<br>practice</button>
                 <button type="button" class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
@@ -26,7 +24,7 @@
 
         </div>
 
-        <div class="form-step" id="ep_or_ct_practice_ex_comp">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step" id="ep_or_ct_practice_ex_comp">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">2.</span> Choose the exercises:</h2>
 
@@ -57,7 +55,7 @@
                 {% endfor %}
             </div>
 
-            <div class="flex flex-row justify-center space-x-6 my-12">
+            <div class="flex flex-row justify-center space-x-6 mt-12">
                 <button type="button" class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="back_to_ep_ct">Back</button>
                 <button type="button" class="rounded-md bg-gray-800 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
@@ -66,7 +64,7 @@
 
         </div>
 
-        <div class="form-step" id="busy_or_surprise">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step" id="busy_or_surprise">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">3.</span> Choose the mode:</h2>
 
@@ -82,14 +80,14 @@
                     id="surprise_choice">Surprise mode</button>
             </div>
 
-            <div class="flex flex-row justify-center space-x-6 my-12">
+            <div class="flex flex-row justify-center space-x-6 mt-12">
                 <button type="button" class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="back_to_ex_comp">Back</button>
             </div>
 
         </div>
 
-        <div class="form-step" id="15_30_60_ses_duration">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step" id="15_30_60_ses_duration">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">4.</span> Choose the session duration:</h2>
 
@@ -108,14 +106,14 @@
                     id="du60_choice">60 minutes</button>
             </div>
 
-            <div class="flex flex-row justify-center space-x-6 my-12">
+            <div class="flex flex-row justify-center space-x-6 mt-12">
                 <button type="button" class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="back_to_busy_surprise">Back</button>
             </div>
 
         </div>
 
-        <div class="form-step" id="1_5_15_start_delay">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step" id="1_5_15_start_delay">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">5.</span> Choose the start delay:</h2>
 
@@ -132,14 +130,14 @@
                     id="de15_choice">15 minutes</button>
             </div>
 
-            <div class="flex flex-row justify-center space-x-6 my-12">
+            <div class="flex flex-row justify-center space-x-6 mt-12">
                 <button type="button" class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="back_to_ses_duration">Back</button>
             </div>
 
         </div>
 
-        <div class="form-step" id="terms_and_start">
+        <div class="rounded-md bg-white px-4 pt-4 pb-12 form-step" id="terms_and_start">
 
             <h2 class="text-base font-semibold"><span class="text-4xl">6.</span> Agree to terms and start session:</h2>
             <p class="text-base text-left my-4">
@@ -156,7 +154,7 @@
                 to the terms.
             </p>
 
-            <div class="flex flex-row justify-center space-x-6 my-12">
+            <div class="flex flex-row justify-center space-x-6 mt-12">
                 <button type="button" class="rounded-md bg-gray-500 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
                     id="back_to_start_delay">Back</button>
                 <button class="rounded-md bg-green-600 px-3.5 py-2.5 text-lg font-medium tracking-widest text-white"
@@ -168,5 +166,3 @@
     </form>
 
 </div>
-
-{% endblock content %}

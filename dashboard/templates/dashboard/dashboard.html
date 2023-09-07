@@ -4,22 +4,12 @@
 
 {% block content %}
 
-<div class="p-6 font-sans text-black">
+<div class="font-sans text-black">
 
-    <div class="flex justify-start mb-14">
-        <div class="flex flex-col items-center">
-            <img class="h-16 w-auto" src="{% static 'img/bike.svg' %}"
-                alt="Practice moto emergencies to better hand anticipate dangers.">
-            <p class="text-sm tracking-widest font-semibold mt-1">BRAKERIDE</p>
-        </div>
-    </div>
-    
     <section id="form_flow">
-        {% include 'dashboard/form_flow.html' %}
-    </section>
-
-    <section id="response_play">
-        {% include 'dashboard/response_play.html' %}
+        <div class="mt-8 mb-12">
+            {% include 'dashboard/form_flow.html' %}
+        </div>
     </section>
 
 </div>
