@@ -42,14 +42,12 @@ class DashboardForm(forms.Form):
         choices=EP_EXERCISE_CHOICES,
         widget=forms.CheckboxSelectMultiple,
         required=False,
-        initial=[choice[0] for choice in EP_EXERCISE_CHOICES],
     )
 
     ct_exercises = forms.MultipleChoiceField(
         choices=CT_EXERCISE_CHOICES,
         widget=forms.CheckboxSelectMultiple,
         required=False,
-        initial=['spot_and_find'],
     )
     
     session_duration = forms.ChoiceField(choices=DURATION_CHOICES, required=True)
