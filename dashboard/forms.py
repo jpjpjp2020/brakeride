@@ -3,8 +3,8 @@ from django import forms
 
 class DashboardForm(forms.Form):
     PRACTICE_CHOICES = (
-        ('EP', 'Emergency Practice'),
-        ('CT', 'City Traffic Practice'),
+        ('EP', 'Emergency practice'),
+        ('CT', 'City traffic practice'),
     )
 
     EP_EXERCISE_CHOICES = (
@@ -32,8 +32,8 @@ class DashboardForm(forms.Form):
     )
 
     MODE_CHOICES = (
-        ('BM', 'Busy Mode'),
-        ('SM', 'Surprise Mode'),
+        ('BM', 'Busy mode'),
+        ('SM', 'Surprise mode'),
     )
     
     practice = forms.ChoiceField(choices=PRACTICE_CHOICES, required=True)

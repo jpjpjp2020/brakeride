@@ -20,15 +20,6 @@ def dashboard_view(request):
         form = DashboardForm()
 
     return render(request, 'dashboard/dashboard.html', {'form': form})
-
-
-# def api_endpoint(request):
-#     if request.method == 'POST':
-#         form = DashboardForm(request.POST)
-#         if form.is_valid():
-#             return JsonResponse({'message': 'Successfull setup'})
-#         else:
-#             return JsonResponse({'message': 'Sorry! Setup failed'})
         
 
 def api_endpoint(request):

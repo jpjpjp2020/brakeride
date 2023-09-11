@@ -488,6 +488,9 @@ video {
 .static {
   position: static;
 }
+.fixed {
+  position: fixed;
+}
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;

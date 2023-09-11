@@ -12,10 +12,10 @@ from ..utilities.session_generator import generate_session_stack
 from ..forms import DashboardForm
 
 data = {
-    'start_delay': 15,
+    'start_delay': 1,
     'session_duration': 60,
     'practice': 'EP',
-    'ep_exercises': ['brake'],
+    'ep_exercises': ['brake', 'swerve_right'],
     'mode': 'BM',
 }
 
