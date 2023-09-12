@@ -6,6 +6,10 @@
 
 <div class="font-sans text-black">
 
+    <div id="loadingSpinner" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center" style="display: none;">
+        <img src="{% static 'img/spin.svg' %}" class="animate-spin-slow h-48 w-auto" alt="Loading spinner">
+    </div>
+
     <section id="form_flow">
         <div class="mt-8 mb-12">
             {% include 'dashboard/form_flow.html' %}
