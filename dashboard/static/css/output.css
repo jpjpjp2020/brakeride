@@ -717,9 +717,9 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.text-yellow-600 {
+.text-yellow-700 {
   --tw-text-opacity: 1;
-  color: rgb(202 138 4 / var(--tw-text-opacity));
+  color: rgb(161 98 7 / var(--tw-text-opacity));
 }
 
 .form-step {
@@ -734,4 +734,32 @@ video {
 #ep_ex,
 #ct_ex {
     display: none;
+}
+@media (min-width: 1024px) {
+
+  .lg\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lg\:h-screen {
+    height: 100vh;
+  }
+
+  .lg\:w-3\/10 {
+    width: 30%;
+  }
+
+  .lg\:bg-gray-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  }
+
+  .lg\:bg-cover {
+    background-size: cover;
+  }
+
+  .lg\:bg-center {
+    background-position: center;
+  }
 }

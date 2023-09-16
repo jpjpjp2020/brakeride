@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+
+    <title>
+        {% block title %}
+        Brakeride - Practice moto emergencies
+        {% endblock title %}
+    </title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicon/android-chrome-512x512.png' %}">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <div class="pt-6 px-6">
+        <header id="header">
+            <div class="flex justify-start">
+                <a href="{% url 'dashboard:dashboard' %}">
+                    <div class="flex flex-col items-center">
+                        <img class="h-16 w-auto" src="{% static 'img/bike.svg' %}"
+                            alt="Practice moto emergencies to better hand anticipate dangers.">
+                        <p class="text-base tracking-widest font-semibold mt-1">BRAKERIDE</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-green-700">Beta</p>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        {% include 'dashboard/footer.html' %}
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+
+</html>
