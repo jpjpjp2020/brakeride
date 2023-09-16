@@ -8,9 +8,12 @@ const endAudioPath = audioPaths.dataset.endAudio;
 
 
 function playStartSound() {
-    let audio = new Audio(startAudioPath);
-    audio.play();
+    setTimeout(() => {
+        let audio = new Audio(startAudioPath);
+        audio.play();
+    }, 100);
 }
+playStartSound();
 
 // countdown timer:
 let countdown = sessionLength;
@@ -38,7 +41,13 @@ function formatTime(seconds) {
     return `${minutes}:${remainingSeconds}`;
 }
 
-// audio event dynamic intervals:
+// How to play:
+function playAudio(audioPath) {
+    let audio = new Audio(audioPath);
+    audio.play();
+}
+
+// When to play:
 let currentIndex = 0;
 
 function checkNextEvent() {
@@ -57,22 +66,49 @@ function setNextInterval() {
         setTimeout(checkNextEvent, timeDiff);
     }
 }
-
+// initial kick for JS to execute sound playing
 setNextInterval();
 
 // End session button:
 document.getElementById('end-session').addEventListener('click', endSession);
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const csrfToken = getCookie('csrftoken');
+
 function endSession() {
     fetch('/end_session/', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken
+        }
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 let audio = new Audio(endAudioPath);
                 audio.play();
-                window.location.href = '/';
+                audio.onended = function () {
+                    window.location.href = '/';
+                };
             } else {
                 console.error('Session end failed');
             }
