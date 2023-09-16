@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import api_endpoint, play_view
+# from .views import api_endpoint, play_view
 
 app_name = 'dashboard'
 

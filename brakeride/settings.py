@@ -128,3 +128,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+
+# if this is removed, use 'sessionid' directly when needed
+SESSION_COOKIE_NAME = 'sessionid'

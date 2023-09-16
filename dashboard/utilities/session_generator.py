@@ -12,6 +12,12 @@ from .surprise_utils import surprise_mode_timing_stack
 
 def generate_session_stack(data):
 
+    # exercises = data.get('exercises[]', [])
+    # if data["practice"] == "EP":
+    #     data['ep_exercises'] = exercises
+    # elif data["practice"] == "CT":
+    #     data['ct_exercises'] = exercises
+    
     session_timing_slots = None
     session_exercises = None
 

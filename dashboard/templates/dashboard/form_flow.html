@@ -1,5 +1,7 @@
 {% load static %}
 
+<div id="api-endpoint-url" data-url="{% url 'dashboard:api_endpoint' %}"></div>
+
 <div id="formContainer">
 
     <form id="formFlowForm" method="post" action="{% url 'dashboard:api_endpoint' %}">

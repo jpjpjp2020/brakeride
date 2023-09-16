@@ -2,7 +2,15 @@
 
 {% load static %}
 
+{% block title %}
+Brakeride - Ongoing session
+{% endblock title %}
+
 {% block content %}
+
+<div id="sessionData" data-session-length="{{ session_length }}"></div>
+<div id="audio-paths" data-start-audio="{% static start_audio %}" data-end-audio="{% static end_audio %}"></div>
+{{ final_play|json_script:"final-play-data" }}
 
 <div class="mt-8 mb-12" id="responseContainer">
 

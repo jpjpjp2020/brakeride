@@ -10,7 +10,8 @@ $.ajaxSetup({
 
     const userChoices = {
         practice: null,
-        exercises: [],
+        ep_exercises: [],
+        ct_exercises: [],
         mode: null,
         session_duration: null,
         start_delay: null,
@@ -77,9 +78,10 @@ $.ajaxSetup({
     function submitForm() {
 
         $('#loadingSpinner').show();
+        const apiUrl = document.getElementById('api-endpoint-url').dataset.url;
 
         $.ajax({
-            url: "{% url 'dashboard:api_endpoint' %}",
+            url: apiUrl,
             method: "POST",
             data: userChoices,
             success: function (response) {
@@ -131,23 +133,28 @@ $.ajaxSetup({
     }
 
     //  2. choices Exercises in Practice
+    // NB - specify HERE and remove reformatting from session_generator
     document.getElementById("to_busy_or_surprise").addEventListener("click", function () {
 
-        userChoices.exercises = [];
+        userChoices.ep_exercises = [];
+        userChoices.ct_exercises = [];
 
         let epExercises = document.querySelectorAll('#ep_ex input[type="checkbox"]:checked');
         epExercises.forEach(function (checkbox) {
-            userChoices.exercises.push(checkbox.value);
+            userChoices.ep_exercises.push(checkbox.value);
         });
 
         let ctExercises = document.querySelectorAll('#ct_ex input[type="checkbox"]:checked');
         ctExercises.forEach(function (checkbox) {
-            userChoices.exercises.push(checkbox.value);
+            userChoices.ct_exercises.push(checkbox.value);
         });
 
         // Force at least 1 choice
-        if (userChoices.exercises.length === 0) {
-            alert('Please select at least one exercise!');
+        if (userChoices.practice === "EP" && userChoices.ep_exercises.length === 0) {
+            alert('Please select at least one emergency practice exercise!');
+            return;
+        } else if (userChoices.practice === "CT" && userChoices.ct_exercises.length === 0) {
+            alert('Please select at least one city traffic practice exercise!');
             return;
         }
 
@@ -158,7 +165,8 @@ $.ajaxSetup({
     // back from 2. Reset Exercises in Practice
     document.getElementById("back_to_ep_ct").addEventListener("click", function () {
 
-        userChoices.exercises = [];
+        userChoices.ep_exercises = [];
+        userChoices.ct_exercises = [];
 
         let epExercises = document.querySelectorAll('#ep_ex input[type="checkbox"]');
         epExercises.forEach(function (checkbox) {

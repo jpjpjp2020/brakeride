@@ -9,7 +9,7 @@ from .stack_task_utils import stack_tasks
 
 def get_emergency_tasks(data, count=1):
 
-    ep_exercises = data['ep_exercises']
+    ep_exercises = data.getlist('ep_exercises[]')
     tasks = []
 
     for _ in range(count):
