@@ -1,6 +1,4 @@
 const sessionLength = parseInt(document.getElementById('sessionData').dataset.sessionLength, 10);
-// debug line next for raw data being passed to JSON.parse()
-console.log(document.getElementById('final-play-data').dataset.final);
 const finalPlay = JSON.parse(document.getElementById('final-play-data').textContent);
 const audioPaths = document.getElementById('audio-paths');
 const startAudioPath = audioPaths.dataset.startAudio;

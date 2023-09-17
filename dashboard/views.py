@@ -19,25 +19,6 @@ def api_endpoint(request):
         try:
             data = request.POST
 
-            # debug ********
-            print(request.POST)
-            if 'ep_exercises[]' in request.POST or 'ct_exercises[]' in request.POST:
-                print("Exercises key is present!")
-            else:
-                print("Exercises key is missing!")
-
-            # Fetching exercises based on practice
-            practice_mode = request.POST.get('practice')
-            if practice_mode == "EP":
-                exercises = request.POST.getlist('ep_exercises[]')
-            elif practice_mode == "CT":
-                exercises = request.POST.getlist('ct_exercises[]')
-            else:
-                exercises = []
-
-            print(exercises)
-            # end debug ********
-
             validate_data(data)
             session_stack = generate_session_stack(data)
             final_play = audio_play_stack(session_stack)
