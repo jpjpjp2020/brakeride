@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # comment in after testing:
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -101,10 +100,15 @@ WSGI_APPLICATION = 'brakeride.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL', 'postgres://localhost:5432/mylocaldb'))
-}
+# DATABASES = {
+#     'default': dj_database_url.config(default=config('DATABASE_URL', 'postgres://localhost:5432/dbbrlocal'))
+# }
 
+DATABASE_URL = config('DATABASE_URL', default='postgres://localhost:5432/dbbrlocal')
+print("DATABASE_URL:", DATABASE_URL)
+DATABASES = {
+    'default': dj_database_url.parse(DATABASE_URL)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -142,6 +146,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
