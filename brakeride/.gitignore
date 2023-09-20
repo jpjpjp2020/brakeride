@@ -12,6 +12,9 @@ media
 staticfiles
 migrations/
 
+#static debug
+collected_static/
+
 # Ignore Python Byte-compiled / optimized files and Python distribution / packaging
 *.py[cod]
 *$py.class
