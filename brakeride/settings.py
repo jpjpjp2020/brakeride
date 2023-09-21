@@ -101,15 +101,15 @@ WSGI_APPLICATION = 'brakeride.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.config(default=config('DATABASE_URL', 'postgres://localhost:5432/dbbrlocal'))
-# }
-
-DATABASE_URL = config('DATABASE_URL', default='postgres://localhost:5432/dbbrlocal')
-print("DATABASE_URL:", DATABASE_URL)
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': dj_database_url.config(default=config('DATABASE_URL', 'postgres://localhost:5432/dbbrlocal'))
 }
+
+# DATABASE_URL = config('DATABASE_URL', default='postgres://localhost:5432/dbbrlocal')
+# print("DATABASE_URL:", DATABASE_URL)
+# DATABASES = {
+#     'default': dj_database_url.parse(DATABASE_URL)
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -158,13 +158,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
+REDIS_HOST = os.environ.get("REDIS_HOST")
+REDIS_PORT = os.environ.get("REDIS_PORT")
+REDIS_USERNAME = os.environ.get("REDIS_USERNAME")
+REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD")
+
 # Setup Redis as cache
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": f"redis://{REDIS_USERNAME}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"ssl": True} 
         }
     }
 }
